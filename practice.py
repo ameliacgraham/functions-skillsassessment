@@ -71,37 +71,71 @@ PART TWO:
 # 1. Write a function called 'hello_world' that does not take any arguments and
 #    prints "Hello World".
 
+def hello_world():
+    print "Hello World"
+
 
 # 2. Write a function called 'say_hi' that takes a name as a string and
 #    prints "Hi" followed by the name.
+
+def say_hi(name):
+    print "Hi", name
 
 
 # 3. Write a function called 'print_product' that takes two integers and
 #    multiplies them together. Print the result.
 
+def print_product(int1, int2):
+    print int1 * int2
+
 
 # 4. Write a function called 'repeat_string' that takes a string and an integer
 #    and prints the string that many times
+
+def repeat_string(string, num):
+    print string * num 
+
 
 
 # 5. Write a function called 'print_sign' that takes an integer and prints
 #    "Higher than 0" if higher than zero and "Lower than 0" if lower than zero.
 #    If the integer is zero, print "Zero".
 
+def print_sign(num):
+    if num > 0:
+        print "Higher than 0"
+    elif num < 0:
+        print "Lower than 0"
+    else:
+        print "Zero"
+
+
 
 # 6. Write a function called 'is_divisible_by_three' that takes an integer and
 #    returns a boolean (True or False), depending on whether the number is
 #    evenly divisible by 3.
 
+def is_divisible_by_three(num):
+    return num % 3 == 0
+
+
 
 # 7. Write a function called 'num_spaces' that takes a sentence as one string
 #    and returns the number of spaces.
+
+def num_spaces(sentence):
+    return sentence.count(" ")
+
 
 
 # 8. Write a function called 'total_meal_price' that can be passed a meal price
 #    and a tip percentage. It should return the total amount paid
 #    (price + price * tip). **However:** passing in the tip percentage should
 #    be optional; if not given, it should default to 15%.
+
+def total_meal_price(meal_price, tip_percentage = .15):
+    return meal_price + meal_price * tip_percentage
+
 
 
 # 9. Write a function called 'sign_and_parity' that takes an integer as an
@@ -113,7 +147,18 @@ PART TWO:
 #    unpack what is returned into two variables --- sign and parity (whether
 #    it's even or odd). Print sign and parity.
 
+def sign_and_parity(num):
+    if num >= 0:
+        sign = ["Positive"]
+    else:
+        sign = ["Negative"]
+    if num % 2 == 0:
+        parity = ["Even"]
+    else:
+        parity = ["Odd"]
+    print parity + sign
 
+sign_and_parity(14)
 ###############################################################################
 
 # PART TWO
@@ -121,6 +166,12 @@ PART TWO:
 # 1. Write a function that takes a name and a job title as parameters, making
 #    it so the job title defaults to "Engineer" if a job title is not passed
 #    in. Return the person's title and name in one string.
+
+def full_title(name, job_title = "Engineer"):
+    return job_title + " " + name 
+
+
+
 
 # 2. Given a recipient name & job title and a sender name, print the following
 #    letter:
@@ -130,6 +181,13 @@ PART TWO:
 #
 #    Use the function from #1 to construct the full title for the letter's
 #    greeting.
+
+
+def write_letter(name, job_title, sender_name):
+    recipient_name = full_title(name, job_title)
+    print "Dear {}, I think you are amazing! Sincerely, {}".format(recipient_name, sender_name)
+
+
 
 
 ###############################################################################

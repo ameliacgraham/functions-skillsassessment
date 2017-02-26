@@ -115,7 +115,7 @@ def hometown_comparison(town_name, first_name, last_name):
     if town == True:
         print "Hi {}, we're from the same place!".format(name)
     else:
-        print "Hi {}, where are you from?"
+        print "Hi {}, where are you from?".format(name)
 
 ###############################################################################
 

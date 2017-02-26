@@ -7,7 +7,19 @@ go below this docstring.
 PART ONE: Write your own function declarations - Part 1 questions aren't
 included in the doctest.
 
+    >>> hometown("LeRoy")
+    True
+
+    >>> full_name("Amelia", "Green")
+    'Amelia Green'
+
+    >>> hometown_comparison("LeRoy", "Alex", "Graham")
+    Hi Alex Graham, we're from the same place!
+
+
+
 PART TWO:
+
 
     >>> is_berry("blackberry")
     True
@@ -59,8 +71,24 @@ included in the doctest.
 #    (a) Write a function that takes a town name as a string and evaluates to
 #        `True` if it is your hometown, and `False` otherwise.
 
+def hometown(town_name):
+    """Check hometown.
+
+    Takes in a town name and returns True if it is 'LeRoy'.
+    """
+    return town_name == "LeRoy"
+
+
 #    (b) Write a function that takes a first and last name as arguments and
 #        returns the concatenation of the two names in one string.
+
+def full_name(first_name, last_name):
+    """Makes full name.
+
+    Takes in a first and last name and returns concatenated string.
+    """
+    return first_name + " " + last_name
+
 
 #    (c) Write a function that takes a home town, a first name, and a last name
 #        as arguments, calls both functions from part (a) and (b) and prints
@@ -68,7 +96,17 @@ included in the doctest.
 #        here', where are you from?" depending on what the function from part
 #        (a) evaluates to.
 
+def hometown_comparison(town_name, first_name, last_name):
+    """Compares hometowns.
 
+    Takes in town and returns whether or not it is the same town.
+    """
+    town = hometown(town_name)
+    name = full_name(first_name, last_name)
+    if town == True:
+        print "Hi {}, we're from the same place!".format(name)
+    else:
+        print "Hi {}, where are you from?"
 
 ###############################################################################
 

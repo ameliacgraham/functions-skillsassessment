@@ -57,6 +57,12 @@ PART TWO:
 PART THREE: Write your own function declarations - Part 3 questions aren't
 included in the doctest.
 
+    >>> append_to_list(["Husky", "Lab", "Pit Bull"], "Boxer", "Beagle", "German Shepard")
+    ['Husky', 'Lab', 'Pit Bull', 'Boxer', 'Beagle', 'German Shepard']
+
+    >>> outer("Balloonicorn")
+    ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
 """
 
 ###############################################################################
@@ -76,6 +82,7 @@ def hometown(town_name):
 
     Takes in a town name and returns True if it is 'LeRoy'.
     """
+
     return town_name == "LeRoy"
 
 
@@ -87,6 +94,7 @@ def full_name(first_name, last_name):
 
     Takes in a first and last name and returns concatenated string.
     """
+
     return first_name + " " + last_name
 
 
@@ -101,6 +109,7 @@ def hometown_comparison(town_name, first_name, last_name):
 
     Takes in town and returns whether or not it is the same town.
     """
+
     town = hometown(town_name)
     name = full_name(first_name, last_name)
     if town == True:
@@ -120,8 +129,7 @@ def hometown_comparison(town_name, first_name, last_name):
 def is_berry(fruit):
     """Determines if fruit is a berry"""
 
-    pass
-
+    return fruit == "strawberry" or fruit == "cherry" or fruit == "blackberry"
 
 # (b) Write another function, shipping_cost(), which calculates shipping cost
 #     by taking a fruit name as a string and calling the is_berry() function
@@ -131,8 +139,11 @@ def is_berry(fruit):
 def shipping_cost(fruit):
     """Calculates shipping cost of fruit"""
 
-    pass
-
+    fruit_name = is_berry(fruit)
+    if fruit_name == True:
+        return 0
+    else:
+        return 5
 
 # 2. Make a function that takes in a number and a list of numbers. It should
 #    return a new list containing the elements of the input list, along with
@@ -142,8 +153,9 @@ def append_to_list(lst, num):
     """Creates a new list consisting of the old list with the given number
        added to the end."""
 
-    pass
-
+    new_list = [number for number in lst]
+    new_list.append(num)
+    return new_list
 
 
 # 3. Write a function calculate_price to calculate an item's total cost by
@@ -162,9 +174,27 @@ def append_to_list(lst, num):
 #    Your function should return the total cost of the item, including tax and
 #    fees.
 
-def calculate_price(FILL_ME_IN):
+def calculate_price(price, state_abbreviation, tax_percentage = .05):
+    """Calculates total price after taxes and appropriate fees."""
 
-    pass
+    after_tax_total = price + price * tax_percentage
+    state_abbreviation = state_abbreviation.upper()
+    if state_abbreviation == "CA":
+        ca_total = after_tax_total + after_tax_total * .03
+        return ca_total
+    elif state_abbreviation == "PA":
+        pa_total = after_tax_total + 2
+        return pa_total
+    elif state_abbreviation == "MA":
+        if price < 100: 
+            ma_total = after_tax_total + 1
+            return ma_total
+        elif price >= 100:
+            ma_total = after_tax_total + 3
+            return ma_total
+    else:
+        return after_tax_total
+
 
 
 ###############################################################################
@@ -181,6 +211,18 @@ def calculate_price(FILL_ME_IN):
 # isn't something we've discussed yet in class; you might need to google how to
 # write a Python function that takes in an arbitrary number of arguments.
 
+def append_to_list(lst, *args):
+    """Adds any number of items to a list.
+
+    Takes in a list and an arbitrary number of items. Adds those items to the list.
+    Returns new list.
+    """
+    for item in args:
+        lst.append(item)
+    return lst
+
+
+
 
 # 2. Make a new function with a nested inner function.
 # The outer function will take in a word.
@@ -193,6 +235,15 @@ def calculate_price(FILL_ME_IN):
 
 #>>> outer("Balloonicorn")
 #('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+def outer(word):
+    """Returns a string, and that string times 3 (from inner function.)"""
+    def inner(word):
+        """Multiplies the word times 3"""
+        outer_times_3 = word * 3
+        return outer_times_3
+    word_times_3 = inner(word)
+    return word, word_times_3
 
 
 ###############################################################################
